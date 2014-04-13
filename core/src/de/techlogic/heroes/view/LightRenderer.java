@@ -5,7 +5,6 @@ package de.techlogic.heroes.view;
 import box2dLight.Light;
 import box2dLight.RayHandler;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -31,8 +30,7 @@ public class LightRenderer {
 		rayHandler.setBlur(true);
 		rayHandler.setBlurNum(2);
 		Light.setContactFilter((short)10, (short)10, (short)10);
-		Gdx.gl.glDepthMask(false);
-
+		
 	}
 
 	public RayHandler getRayHandler() {
@@ -43,9 +41,8 @@ public class LightRenderer {
 		rayHandler.setCombinedMatrix(cam.combined, cam.position.x,
 				cam.position.y, cam.viewportWidth / cam.zoom,
 				cam.viewportHeight / cam.zoom);
-		
-		//rayHandler.updateAndRender();
-		
+		rayHandler.updateAndRender();
+	
 	}
 
 }
