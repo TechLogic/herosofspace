@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -82,8 +83,9 @@ public class MainMenu implements Screen {
 		batch = new SpriteBatch();
 		FreeTypeFontGenerator gen = new FreeTypeFontGenerator(
 				Gdx.files.internal("data/font.ttf"));
-
-		font = gen.generateFont(25);
+		FreeTypeFontParameter para = new FreeTypeFontParameter();
+		para.size=25;
+		font = gen.generateFont(para);
 		font.setColor(0, 0, 0, 1);
 		gen.dispose();
 		atlas = new TextureAtlas("data/button.atlas");

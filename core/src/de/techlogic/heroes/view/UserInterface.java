@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Matrix4;
@@ -41,7 +42,11 @@ public class UserInterface {
 		FreeTypeFontGenerator gen = new FreeTypeFontGenerator(
 				Gdx.files.internal("data/font.ttf"));
 
-		font = gen.generateFont(15);
+		FreeTypeFontParameter para = new FreeTypeFontParameter();
+		para.size = 15;
+	
+		
+		font = gen.generateFont(para);
 		font.setColor(1, 1, 1, 1);
 
 		batch = new SpriteBatch();
