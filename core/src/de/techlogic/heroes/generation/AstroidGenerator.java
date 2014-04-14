@@ -13,7 +13,7 @@ public class AstroidGenerator {
 
 	
 	public Texture createAstroid(){
-		int radius = 10;
+		int radius = 100;
 		final Color[] ASTROIDCOLORS= {Color.GRAY,Color.LIGHT_GRAY,Color.DARK_GRAY,new Color(139f/255f,69f/255f,19f/255f,1f),new Color(139f/255f,119f/255f,101f/255f,1f),new Color(139f/255f,125f/255f,107f/255f,1f),new Color(139f/255f,90f/255f,43f/255f,1f),new Color(238f/255f,223f/255f,204f/255f,1f)};
 		Random random = new Random();
 		
@@ -31,11 +31,12 @@ public class AstroidGenerator {
 		
 		map.setColor(Color.LIGHT_GRAY);
 		Vector2 vector = new Vector2(radius, radius);
-		for(int i =random.nextInt(25)+25  ;i>0;i--){
+		for(int i =random.nextInt(50)+50  ;i>0;i--){
 			Vector2 pos = new Vector2(random.nextInt(2*radius), random.nextInt(2*radius));
-			if(pos.dst(vector)<radius-1){
+			int r = random.nextInt(25)+1;
+			if(pos.dst(vector)<radius-r){
 			map.setColor(ASTROIDCOLORS[random.nextInt(ASTROIDCOLORS.length)]);
-			map.fillCircle((int)pos.x, (int)pos.y,1);
+			map.fillCircle((int)pos.x, (int)pos.y,r);
 			}
 		}
 		
@@ -44,8 +45,8 @@ public class AstroidGenerator {
 		while(degree < 360){
 		x = (int) (Math.sin(degree)*radius)+radius;
 		y = (int) (Math.cos(degree)*radius)+radius;
-		map.fillCircle(x, y,1);
-		degree += random.nextInt(5)+10;
+		map.fillCircle(x, y,random.nextInt(25)+1);
+		degree += random.nextInt(25);
 		}
 		map.setColor(Color.CLEAR);
 		
