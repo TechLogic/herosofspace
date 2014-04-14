@@ -5,10 +5,12 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
 import de.techlogic.heroes.HeroesOfSpace;
+import de.techlogic.heroes.generation.AstroidGenerator;
 import de.techlogic.heroes.model.Astroid;
 import de.techlogic.heroes.model.Enemy;
 import de.techlogic.heroes.model.Entity;
@@ -36,6 +38,7 @@ public class Space {
 		Gdx.input.setInputProcessor(new InputHandler(this));
 		entities.add(ship);
 		Random rnd = new Random();
+		AstroidGenerator generator = new AstroidGenerator();
 
 		for (int i = 0; i <= rnd.nextInt(500) + 1000; i++) {
 			Vector2 pos = new Vector2(rnd.nextInt(levelWidth / 2 - 200),
@@ -46,9 +49,8 @@ public class Space {
 			if (rnd.nextBoolean()) {
 				pos.y *= -1;
 			}
-
-			Astroid a = new Astroid(this, pos, rnd.nextInt(10),
-					rnd.nextInt(10), rnd.nextFloat(), 0);
+			Texture texture = generator.createAstroid();
+			Astroid a = new Astroid(this, pos, rnd.nextInt(10),rnd.nextFloat(), 0,texture);
 			a.setBody(world.createBody(a.getBodyDef()));
 
 		}

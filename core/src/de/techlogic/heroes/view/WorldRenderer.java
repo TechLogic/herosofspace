@@ -2,9 +2,11 @@ package de.techlogic.heroes.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import de.techlogic.heroes.generation.AstroidGenerator;
 import de.techlogic.heroes.generation.BackgroundGenerator;
 import de.techlogic.heroes.generation.background.Background;
 import de.techlogic.heroes.model.Entity;
@@ -20,6 +22,8 @@ public class WorldRenderer {
 	private BackgroundGenerator generator;
 	private Background background;
 	private int zoom = 10;
+	
+	private Texture texture;
 
 	public WorldRenderer(Space space,OrthographicCamera camera) {
 		this.space = space;
@@ -39,6 +43,11 @@ public class WorldRenderer {
 		oldRotation = ship.getRotation();
 
 		background = generator.generateBackground();
+		
+		AstroidGenerator gen = new AstroidGenerator();
+		
+		texture = gen.createAstroid();
+		
 
 	}
 
@@ -75,7 +84,7 @@ public class WorldRenderer {
 				e.draw(batch);
 			}
 		}
-
+		batch.draw(texture, 0, 0);
 		batch.end();
 
 	}

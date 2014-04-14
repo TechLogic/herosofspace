@@ -3,6 +3,7 @@ package de.techlogic.heroes.model;
 import java.util.Random;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -14,9 +15,11 @@ public class Astroid extends MoveableEntity {
 
 	private Random rnd = new Random();
 
-	public Astroid(Space space, Vector2 position, float witdh, float height,
-			float speed, float rotation) {
-		super(space, witdh, height, speed);
+
+	public Astroid(Space space, Vector2 position,float radius,
+			float speed, float rotation,Texture texture) {
+		super(space, radius, radius, speed);
+		this.texture = texture;
 		bodyDef.type = BodyType.DynamicBody;
 		bodyDef.gravityScale = 1;
 		bodyDef.angle = rotation;
@@ -38,10 +41,9 @@ public class Astroid extends MoveableEntity {
 		CircleShape c = new CircleShape();
 		fixtureDef.restitution = 0.3f;
 
-		c.setRadius(Math.max(witdh, height) / 2);
+		c.setRadius(Math.max(width, height) / 2);
 		fixtureDef.shape = c;
-		texture = new Texture("data/asteroid.png");
-
+		
 	}
 
 	@Override
@@ -57,4 +59,10 @@ public class Astroid extends MoveableEntity {
 		 gold.setBody(space.getWorld().createBody(gold.getBodyDef()));
 		
 	}
+	
+	
+	
+	
+	
+
 }

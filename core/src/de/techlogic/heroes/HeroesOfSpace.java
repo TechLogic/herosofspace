@@ -12,7 +12,7 @@ public class HeroesOfSpace extends Game {
 
 	@Override
 	public void create() {
-		Screen splash = new de.techlogic.heroes.screens.SplashScreen(this);
+		Screen splash = new de.techlogic.heroes.screens.Game(this);
 		setScreen(splash);
 
 	}
