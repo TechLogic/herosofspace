@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Shield
-  m_Shader: {fileID: 4800000, guid: 87722ed87ae439d46908dc73fb8a0c07, type: 3}
+  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,9 +17,9 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-          m_Scale: {x: 25, y: 25}
-          m_Offset: {x: 10, y: 10}
+          m_Texture: {fileID: 2800000, guid: 3323ffff4f491dc498daf28699600f7b, type: 3}
+          m_Scale: {x: 1000, y: 1000}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
@@ -29,14 +29,14 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
+          name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _Illum
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -58,7 +58,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .142733544, g: .576303542, b: .882352948, a: 1}
+        second: {r: .0696366653, g: .525808275, b: .676470578, a: 1}
       data:
         first:
           name: _SpecColor
