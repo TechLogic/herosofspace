@@ -3,6 +3,9 @@ using System.Collections;
 using System.Timers;
 using System;
 
+
+namespace Life {
+
 public class LifeBehaviour : MonoBehaviour {
 
     public int Health;
@@ -31,6 +34,11 @@ public class LifeBehaviour : MonoBehaviour {
         Health -= healthDamage;
         HitTime = System.DateTime.Now;
         RegenerationTimer.Stop();
+
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
         
     }
 
@@ -74,5 +82,5 @@ public class LifeBehaviour : MonoBehaviour {
     }
 
     }
-
+}
 
