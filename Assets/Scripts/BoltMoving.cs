@@ -27,8 +27,10 @@ public class BoltMoving : MonoBehaviour
 
        Destroy(gameObject);
        LifeBehaviour life = collider.GetComponent<LifeBehaviour>();
-       life.TakeDamage(damage);
-        
+       if (life != null)
+       {
+           life.TakeDamage(damage);
+       }
 
     }
 }
