@@ -57,6 +57,37 @@ namespace NoiseGeneration
         }
 
 
+        public float[] generateNoise(int Width, int Height, float Size)
+        {
+            this.Width = Width;
+            this.Height = Height;
+            InitialSize = Size;
+            float[] noise = new float[Width * Height];
+
+            List<float[]> list = new List<float[]>();
+            while (Size > 10)
+            {
+                list.Add(generateNoise(Size));
+                Size /= 2;
+            }
+            for (int i = 0; i < noise.Length; i++)
+            {
+                float NoiseValue = 0f;
+                foreach (float[] f in list)
+                {
+                    NoiseValue += f[i];
+                }
+                NoiseValue /= list.Count;
+
+
+                noise[i] = NoiseValue;
+            }
+            return noise;
+
+            
+
+        }
+
 
 
 
