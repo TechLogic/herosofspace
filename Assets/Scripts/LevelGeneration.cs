@@ -18,8 +18,25 @@ public class LevelGeneration : MonoBehaviour {
 
 
         //Generate Skybox
+       CreateSkyBox();
+
+
+       AudioSource source = player.GetComponentInChildren<AudioSource>();
+       float length = source.clip.length;
+       float start = Random.Range(0, length);
+       source.time = start;
+       source.Play();
+
+
+       Destroy(gameObject);
+      
+
+	}
+
+    private static void CreateSkyBox()
+    {
         NoiseGenerator noise = new NoiseGenerator();
-        Texture2D texture = noise.GenerateTexture(1080, 720,10000f);
+        Texture2D texture = noise.GenerateTexture(1080, 720, 10000f);
         texture.wrapMode = TextureWrapMode.Repeat;
 
         for (int i = 0; i <= Random.Range(2000, 3500); i++)
@@ -31,18 +48,18 @@ public class LevelGeneration : MonoBehaviour {
             }
             else
             {
-               int x =  Random.Range(0, texture.width) ;
-               int y = Random.Range(0, texture.height);
+                int x = Random.Range(0, texture.width);
+                int y = Random.Range(0, texture.height);
 
 
 
-               texture.SetPixel(x, y, Color.white);
-               texture.SetPixel(x + 1, y, Color.white);
-               texture.SetPixel(x, y + 1, Color.white);
-               texture.SetPixel(x + 1, y + 1, Color.white);
-    
+                texture.SetPixel(x, y, Color.white);
+                texture.SetPixel(x + 1, y, Color.white);
+                texture.SetPixel(x, y + 1, Color.white);
+                texture.SetPixel(x + 1, y + 1, Color.white);
+
             }
-            }
+        }
         texture.Apply();
 
         GameObject camera = Camera.main.gameObject;
@@ -58,10 +75,8 @@ public class LevelGeneration : MonoBehaviour {
         skybox.material.SetTexture("_RightTex", texture);
         skybox.material.SetTexture("_UpTex", texture);
         skybox.material.SetTexture("_DownTex", texture);
-            
-      
 
-	}
+    }
 
     
 
@@ -91,6 +106,9 @@ public class LevelGeneration : MonoBehaviour {
 
         }
     }
+
+
+
 
 
 
